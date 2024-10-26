@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center mt-4">
+    <h1 class="display-4">Кликер!</h1>
+    {% if current_user.is_authenticated %}
+        <p class="lead">Количество кликов — <span class="badge badge-primary">{{current_user.clicks }}</span></p>
+        <a href="{{ url_for('click') }}" class="btn btn-primary btn-lg">Кликни меня</a>
+    {% else %}
+        <p class="lead">Пожалуйста, войдите в систему, чтобы начать играть.</p>
+        <a href="{{ url_for('login') }}" class="btn btn-secondary btn-lg">Войти в систему</a>
+        <a href="{{ url_for('register') }}" class="btn btn-outline-secondary btn-lg">Зарегистрироваться</a>
+    {% endif %}
+</div>
+{% endblock %}
